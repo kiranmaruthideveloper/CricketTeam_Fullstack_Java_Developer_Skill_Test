@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Add New Player</h2>
+      <label for="playerName">Name:</label>
+      <input id="playerName" [(ngModel)]="player.name" placeholder="Player Name" />
+      <label for="playerRole">Role:</label>
+      <select id="playerRole" [(ngModel)]="player.role">
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+      <button class="btn btn-primary" (click)="addPlayer()" [disabled]="player.name===''">Add Player</button>
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+  
+        <h2>PlayerList</h2>
+        <ul>
+          <li *ngFor="let player of players">
+            {{player.name}} - {{player.role}}
+            <button class="btn btn-success" (click)="addToTeam(player)">Add To Team</button>
+           
+  
+            <select [(ngModel)]="player.selectedRole">
+              <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+            </select>
+            <button class="btn btn-primary" (click)="changeRole(player)">Change Role</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
